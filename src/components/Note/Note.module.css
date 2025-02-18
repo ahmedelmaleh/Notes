@@ -3,12 +3,17 @@
   background-color: var(--white-900);
   border: 2px solid var(--white-700);
   border-radius: 12px;
+  padding: var(--padding);
+  transition: all 0.3s ease-in-out;
 }
 
+/* Ensure the text wraps properly */
 .note [class="note-body"] {
   padding: var(--padding);
+  word-wrap: break-word;
 }
 
+/* Limit text to 3 lines, allow "Read More" functionality */
 .note [class="note-body"] .read-more {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -16,7 +21,49 @@
   overflow: hidden;
 }
 
+/* Footer styling */
 .note [class="note-footer"] {
   padding: 5px var(--padding);
-  background-color: rgb(33, 37, 41, 0.05);
+  background-color: rgba(33, 37, 41, 0.05);
+}
+
+/* 🔹 Mobile Responsive Design */
+@media screen and (max-width: 768px) {
+  .note {
+    --padding: 10px;
+    border-radius: 8px;
+    font-size: 14px; /* Reduce font size for better readability */
+  }
+
+  .note [class="note-body"] {
+    padding: var(--padding);
+  }
+
+  .note [class="note-body"] .read-more {
+    -webkit-line-clamp: 2; /* Show fewer lines on mobile */
+    font-size: 13px; /* Slightly smaller text */
+  }
+
+  .note [class="note-footer"] {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
+
+/* 🔹 For Very Small Screens (like older phones) */
+@media screen and (max-width: 480px) {
+  .note {
+    --padding: 8px;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+
+  .note [class="note-body"] .read-more {
+    -webkit-line-clamp: 1; /* Show only one line on very small screens */
+  }
+
+  .note [class="note-footer"] {
+    padding: 3px;
+    font-size: 11px;
+  }
 }
